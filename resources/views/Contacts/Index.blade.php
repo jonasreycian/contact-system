@@ -7,9 +7,16 @@
             <h2>Contact System</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="" title="Create a product"> <i class="fas fa-plus-circle"></i>
-            </a>
+            <a class="btn btn-success" href="{{ route('contacts.create') }}" title="Create a contact"> <i class="fas fa-plus-circle"></i></a>
+
+            <form action="{{ route('auth.logout') }} " method="POST">
+                @csrf
+                <button type="submit" title="logout" class="btn btn-danger">
+                    Logout
+                </button>
+            </form>
         </div>
+
     </div>
 </div>
 
@@ -30,22 +37,22 @@
     </tr>
     @foreach($contacts as $contact)
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <td>{{ $contact->name }}</td>
+            <td>{{ $contact['company'] }}</td>
+            <td>{{ $contact['phone_number'] }}</td>
+            <td>{{ $contact['email'] }}</td>
+            <td>{{ $contact['created_at'] }}</td>
             <td>
-                <form action="" method="POST">
 
-                    <a href="" title="show">
+            <a href="{{ route('contacts.show', $contact->id)}}" title="show">
                         <i class="fas fa-eye text-success  fa-lg"></i>
                     </a>
 
-                    <a href="">
+                    <a href=" {{ route('contacts.edit', $contact->id )}} ">
                         <i class="fas fa-edit  fa-lg"></i>
                     </a>
 
+            <form action="{{ route('contacts.destroy', $contact->id) }} " method="POST">
                     @csrf
                     @method('DELETE')
 

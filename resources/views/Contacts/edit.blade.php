@@ -23,7 +23,7 @@
     </div>
 @endif
 
-<form action="" method="POST">
+<form action="{{ route('contacts.update', $contact->id) }}" method="POST">
     @csrf
     @method('PUT')
 
@@ -31,26 +31,26 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" value="" class="form-control" placeholder="Name">
+                <input type="text" name="name" value=" {{ $contact->name }} " class="form-control" placeholder="Name">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Company:</strong>
-                <textarea class="form-control" style="height:50px" name="company" placeholder="company"></textarea>
+                <input class="form-control" style="height:50px" name="company" placeholder="company" value="{{ $contact->company }}" />
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Phone:</strong>
-                <textarea class="form-control" style="height:50px" name="phone_number"
-                    placeholder="phone_number"></textarea>
+                <input class="form-control" style="height:50px" name="phone_number" value="{{ $contact->phone_number }}"
+                    placeholder="phone_number" />
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email:</strong>
-                <textarea class="form-control" style="height:50px" name="email" placeholder="email"></textarea>
+                <input class="form-control" style="height:50px" name="email" placeholder="email" value="{{ $contact->company }}" />
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
